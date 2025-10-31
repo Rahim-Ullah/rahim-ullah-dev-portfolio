@@ -52,7 +52,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
         <div className="navbar-content">
           <div className="navbar-logo" onClick={() => scrollToSection('home')}>
             <span className="logo-bracket">&lt;</span>
-            <span className="logo-text gradient-text">DevPortfolio</span>
+            <span className="logo-text gradient-text">Rahim_Devx</span>
             <span className="logo-bracket">/&gt;</span>
           </div>
 

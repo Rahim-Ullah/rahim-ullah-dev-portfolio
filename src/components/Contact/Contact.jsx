@@ -64,8 +64,8 @@ const Contact = () => {
         </svg>
       ),
       title: 'Email',
-      value: 'developer@email.com',
-      link: 'mailto:developer@email.com'
+      value: 'eas@tomorjerry.com',
+      link: 'mailto:easy@tomorjerry.com'
     },
     {
       icon: (
@@ -74,8 +74,8 @@ const Contact = () => {
         </svg>
       ),
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567'
+      value: '+92 3345891255',
+      link: 'tel:+923345891255'
     },
     {
       icon: (
@@ -85,7 +85,7 @@ const Contact = () => {
         </svg>
       ),
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Mirpur, Azad Kashmir, Pakistan',
       link: '#'
     }
   ]
@@ -125,7 +125,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   className={errors.name ? 'error' : ''}
-                  placeholder="John Doe"
+                  placeholder="Rahim Ullah"
                 />
                 {errors.name && <span className="error-message">{errors.name}</span>}
               </div>
@@ -139,7 +139,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   className={errors.email ? 'error' : ''}
-                  placeholder="john@example.com"
+                  placeholder="rahimdev@gmail.com"
                 />
                 {errors.email && <span className="error-message">{errors.email}</span>}
               </div>
@@ -154,7 +154,7 @@ const Contact = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 className={errors.subject ? 'error' : ''}
-                placeholder="Project Discussion"
+                placeholder="Your discussion title"
               />
               {errors.subject && <span className="error-message">{errors.subject}</span>}
             </div>
