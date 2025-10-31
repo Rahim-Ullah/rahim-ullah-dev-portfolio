@@ -1,0 +1,235 @@
+.experience {
+  position: relative;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gradient-primary);
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 4rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.timeline-item.left .timeline-content {
+  margin-right: calc(50% + 50px);
+  text-align: right;
+}
+
+.timeline-item.right .timeline-content {
+  margin-left: calc(50% + 50px);
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 70px;
+  background: var(--bg-card);
+  border: 4px solid var(--cyan-main);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 0 0 8px var(--bg-primary);
+  transition: var(--transition);
+}
+
+.timeline-item:hover .timeline-dot {
+  background: var(--gradient-primary);
+  transform: translateX(-50%) scale(1.15);
+  border-color: var(--purple-main);
+}
+
+.dot-icon {
+  font-size: 2rem;
+  transition: var(--transition);
+}
+
+.timeline-item:hover .dot-icon {
+  transform: rotate(360deg);
+}
+
+.timeline-content {
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--border-color);
+  transition: var(--transition);
+  position: relative;
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  width: 30px;
+  height: 2px;
+  background: var(--cyan-main);
+}
+
+.timeline-item.left .timeline-content::before {
+  right: -30px;
+}
+
+.timeline-item.right .timeline-content::before {
+  left: -30px;
+}
+
+.timeline-content:hover {
+  border-color: var(--cyan-main);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-5px);
+}
+
+.timeline-header {
+  margin-bottom: 1rem;
+}
+
+.timeline-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.timeline-period {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.timeline-company {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.timeline-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-achievements {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.timeline-achievements li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.timeline-item.left .timeline-achievements li {
+  flex-direction: row-reverse;
+  text-align: right;
+}
+
+.timeline-achievements svg {
+  color: var(--cyan-main);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    margin: 0;
+    margin-left: 80px;
+    text-align: left;
+  }
+
+  .timeline-dot {
+    left: 30px;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    transform: translate(-50%, 0) scale(1.15);
+  }
+
+  .timeline-content::before {
+    display: none;
+  }
+
+  .timeline-item.left .timeline-achievements li,
+  .timeline-item.right .timeline-achievements li {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .timeline-content {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-dot {
+    left: 20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .dot-icon {
+    font-size: 1.5rem;
+  }
+
+  .timeline-item.left .timeline-content,
+  .timeline-item.right .timeline-content {
+    margin-left: 60px;
+  }
+
+  .timeline-content {
+    padding: 1.5rem;
+  }
+
+  .timeline-title {
+    font-size: 1.2rem;
+  }
+}
+
