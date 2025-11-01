@@ -262,3 +262,4 @@ npm run preview
 
 🎉 **Congratulations! Your portfolio is ready to deploy!** 🎉
 
+

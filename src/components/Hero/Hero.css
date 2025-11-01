@@ -4,7 +4,11 @@
   align-items: center;
   position: relative;
   padding-top: 80px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: visible;
+  width: 100%;
+  max-width: 100vw;
+  box-sizing: border-box;
 }
 
 .hero-glow {
@@ -39,10 +43,18 @@
   align-items: center;
   position: relative;
   z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero-text {
   animation-delay: 0.2s;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: visible;
+  padding-right: 0;
+  margin-right: 0;
 }
 
 .hero-greeting {
@@ -69,12 +81,15 @@
 }
 
 .hero-name {
-  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-size: clamp(2.5rem, 8vw, 5.5rem);
   font-weight: 900;
   line-height: 1.1;
   margin-bottom: 0.5rem;
   letter-spacing: -0.03em;
   animation-delay: 0.4s;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .hero-title {
@@ -83,10 +98,14 @@
 }
 
 .hero-title h2 {
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.02em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  line-height: 1.2;
 }
 
 .cursor {
@@ -106,6 +125,9 @@
   margin-bottom: 2.5rem;
   max-width: 600px;
   animation-delay: 0.8s;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .hero-buttons {
@@ -114,6 +136,10 @@
   margin-bottom: 3rem;
   flex-wrap: wrap;
   animation-delay: 1s;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* overflow: hidden; */
 }
 
 .btn {
@@ -125,11 +151,27 @@
   cursor: pointer;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   transition: var(--transition);
   font-family: var(--font-primary);
   position: relative;
+  overflow: visible;
+  white-space: nowrap;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: auto;
+  min-width: fit-content;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
   overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .btn::before {
@@ -143,6 +185,34 @@
   background: rgba(255, 255, 255, 0.3);
   transform: translate(-50%, -50%);
   transition: width 0.6s, height 0.6s;
+  z-index: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 480px) {
+  .btn::after,
+  .btn::before {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  .btn span {
+    color: inherit !important;
+    z-index: 100 !important;
+  }
+
+  .btn-primary span {
+    color: white !important;
+  }
+
+  .btn-secondary span {
+    color: var(--cyan-main) !important;
+  }
+
+  .btn svg {
+    z-index: 100 !important;
+  }
 }
 
 .btn:hover::before {
@@ -153,7 +223,16 @@
 .btn span,
 .btn svg {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  flex-shrink: 0;
+  display: block;
+}
+
+.btn span {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .btn-primary {
@@ -369,29 +448,176 @@
   .floating-elements {
     display: none;
   }
+
+  .hero-glow-1 {
+    width: 400px;
+    height: 400px;
+  }
+
+  .hero-glow-2 {
+    width: 350px;
+    height: 350px;
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
     min-height: auto;
     padding: 100px 0 60px;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+  }
+
+  .hero .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
   }
   
+  .hero-content {
+    gap: 2rem;
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-text {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible;
+    padding: 0;
+    margin: 0;
+  }
+
   .hero-greeting {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
   }
   
   .hero-description {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    max-width: 100%;
+    width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: visible;
+    display: block;
+    white-space: normal;
+    text-overflow: clip;
+    hyphens: auto;
+  }
+
+  .hero-name {
+    max-width: 100%;
+    word-wrap: break-word;
+  }
+
+  .hero-title h2 {
+    max-width: 100%;
+    word-wrap: break-word;
   }
   
   .hero-buttons {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+    overflow: visible;
+    justify-content: flex-start;
   }
   
   .btn {
-    width: 100%;
+    width: auto;
+    flex: 0 0 auto;
+    min-width: auto;
+    max-width: none;
     justify-content: center;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    min-height: auto;
+    box-sizing: border-box;
+    overflow: visible;
+    white-space: nowrap;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    border-width: 2px;
+  }
+
+  .btn::after,
+  .btn::before {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+  .btn {
+    position: relative;
+  }
+
+  .btn span {
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.4;
+    overflow: visible;
+    word-break: keep-all;
+    flex: 0 1 auto;
+    position: relative;
+    z-index: 100 !important;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    color: inherit;
+  }
+
+  .btn-primary span {
+    color: white !important;
+  }
+
+  .btn-secondary span {
+    color: var(--cyan-main) !important;
+  }
+
+  .btn svg {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    position: relative;
+    z-index: 100 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: block !important;
+  }
+
+  .btn-primary svg {
+    color: white !important;
+    stroke: white !important;
+    fill: white !important;
+  }
+
+  .btn-secondary svg {
+    color: var(--cyan-main) !important;
+    stroke: var(--cyan-main) !important;
+    fill: var(--cyan-main) !important;
   }
   
   .code-content {
@@ -403,25 +629,257 @@
     width: 25px;
     margin-right: 0.8rem;
   }
+
+  .hero-social {
+    gap: 0.8rem;
+    justify-content: center;
+  }
+
+  .hero-glow-1,
+  .hero-glow-2 {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 @media (max-width: 480px) {
+  .hero {
+    padding: 90px 0 40px;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+    min-height: auto;
+    position: relative;
+  }
+
+  .hero .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .hero-content {
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .hero-text {
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hero-greeting {
+    font-size: 0.95rem;
+    gap: 0.5rem;
+  }
+  
   .hero-social {
-    gap: 0.8rem;
+    gap: 0.7rem;
+    flex-wrap: wrap;
   }
   
   .social-link {
-    width: 45px;
-    height: 45px;
+    width: 42px;
+    height: 42px;
+  }
+
+  .social-link svg {
+    width: 20px;
+    height: 20px;
   }
   
   .code-content {
     padding: 1rem;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    line-height: 1.6;
+  }
+
+  .line-number {
+    width: 20px;
+    margin-right: 0.5rem;
   }
   
   .window-header {
     padding: 0.8rem 1rem;
   }
+
+  .window-controls {
+    gap: 0.3rem;
+  }
+
+  .control {
+    width: 12px;
+    height: 12px;
+  }
+
+  .window-title {
+    font-size: 0.8rem;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.75rem;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0.95rem 0.75rem;
+    font-size: 0.88rem;
+    min-height: 48px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    border-width: 2px;
+  }
+
+  .btn span {
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 0.88rem;
+    padding: 0;
+    margin: 0;
+    flex: 0 1 auto;
+    overflow: visible;
+    word-break: keep-all;
+    display: block;
+    position: relative;
+    z-index: 100 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .btn-primary span {
+    color: white !important;
+  }
+
+  .btn-secondary span {
+    color: var(--cyan-main) !important;
+  }
+
+  .btn svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    position: relative;
+    z-index: 100 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .btn-primary svg {
+    color: white !important;
+    stroke: white !important;
+  }
+
+  .btn-secondary svg {
+    color: var(--cyan-main) !important;
+    stroke: var(--cyan-main) !important;
+  }
 }
+
+@media (max-width: 360px) {
+  .hero {
+    padding: 85px 0 30px;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .hero .container {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+
+  .hero-greeting {
+    font-size: 0.9rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .code-content {
+    font-size: 0.65rem;
+    padding: 0.8rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hero-buttons {
+    gap: 0.7rem;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .btn {
+    padding: 0.9rem 0.7rem;
+    font-size: 0.85rem;
+    min-height: 48px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+  }
+
+  .btn span {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+  }
+
+  .btn svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+}
+
 

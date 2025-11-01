@@ -40,8 +40,10 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
   gap: 2.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .project-card {
@@ -187,10 +189,26 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .projects-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-filters {
+    gap: 0.8rem;
+  }
+
+  .project-filter-btn {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .project-image {
@@ -204,20 +222,65 @@
   .project-content {
     padding: 1.5rem;
   }
+
+  .project-title {
+    font-size: 1.3rem;
+  }
+
+  .project-description {
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {
   .project-filters {
     flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 2.5rem;
   }
 
   .project-filter-btn {
     width: 100%;
     justify-content: center;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.9rem;
+    min-height: 44px;
   }
 
   .projects-grid {
-    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .project-image {
+    height: 160px;
+  }
+
+  .project-icon {
+    font-size: 3.5rem;
+  }
+
+  .project-content {
+    padding: 1.2rem;
+  }
+
+  .project-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .project-tech {
+    gap: 0.5rem;
+  }
+
+  .tech-tag {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.8rem;
   }
 
   .project-link {
@@ -229,5 +292,32 @@
     width: 20px;
     height: 20px;
   }
+
+  .project-overlay {
+    gap: 1rem;
+  }
 }
+
+@media (max-width: 360px) {
+  .project-image {
+    height: 140px;
+  }
+
+  .project-icon {
+    font-size: 3rem;
+  }
+
+  .project-content {
+    padding: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.1rem;
+  }
+
+  .project-description {
+    font-size: 0.85rem;
+  }
+}
+
 
